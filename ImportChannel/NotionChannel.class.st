@@ -12,6 +12,11 @@ Class {
 }
 
 { #category : #accessing }
+NotionChannel >> bearerAuthentication: aString [ 
+	bearerAuthentication := aString
+]
+
+{ #category : #accessing }
 NotionChannel >> json [
 	| jsonString |
 	"this is a comment"
@@ -28,6 +33,13 @@ NotionChannel >> openDatabase: aString bearerAuthentication: aString1 [
 
 { #category : #accessing }
 NotionChannel >> pages [
+]
+
+{ #category : #accessing }
+NotionChannel >> pagesInDatabase: aDatabaseID [ 
+	| jsonString |
+	jsonString := ZnClient new setBearerAuthentication: bearerAuthentication; headerAt: 'Notion-Version' put: '2021-08-16'; url: 'https://api.notion.com/v1/databases/', aDatabaseID, '/query'; post.
+	^ (STONJSON fromString: jsonString) at: 'results'.
 ]
 
 { #category : #accessing }
