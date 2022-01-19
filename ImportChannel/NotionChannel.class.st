@@ -14,6 +14,7 @@ Class {
 { #category : #accessing }
 NotionChannel >> json [
 	| jsonString |
+	"this is a comment"
 	jsonString := ZnClient new setBearerAuthentication: bearerAuthentication; headerAt: 'Notion-Version' put: '2021-08-16'; url: 'https://api.notion.com/v1/databases/', databaseID, '/query'; post.
 
 	jsonDictionary := STONJSON fromString: jsonString.
