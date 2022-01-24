@@ -17,6 +17,24 @@ NotionChannel >> bearerAuthentication: aString [
 ]
 
 { #category : #accessing }
+NotionChannel >> database: aString [ 
+	| aNotionDatabase |
+	aNotionDatabase := NotionDatabase new notionChannel: self.
+	aNotionDatabase notionChannel: self id: aString.
+	^ aNotionDatabase
+	
+]
+
+{ #category : #accessing }
+NotionChannel >> getJSON: url [ 
+	| aDictionary jsonString |
+	jsonString := ZnClient new setBearerAuthentication: bearerAuthentication; headerAt: 'Notion-Version' put: '2021-08-16'; url: url; post.
+
+	aDictionary := STONJSON fromString: jsonString.
+	^ aDictionary
+]
+
+{ #category : #accessing }
 NotionChannel >> json [
 	| jsonString |
 	"this is a comment"
