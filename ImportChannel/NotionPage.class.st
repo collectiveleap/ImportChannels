@@ -10,6 +10,7 @@ Class {
 
 { #category : #accessing }
 NotionPage >> globalID [
+	"generate the id"
 	^ (self url).
 ]
 
