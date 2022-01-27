@@ -26,6 +26,13 @@ NotionPage >> json: notionPageJSON [
 ]
 
 { #category : #accessing }
+NotionPage >> title [
+	| aTitle |
+	aTitle := ((((notionJSON at: 'properties') at: 'Name') at: 'title') at: 1) at: 'plain_text'.
+	^ aTitle
+]
+
+{ #category : #accessing }
 NotionPage >> url [
 	url := (url ifNil: [self json at: 'url'.] ifNotNil: [url.]).
 	^ url. 
