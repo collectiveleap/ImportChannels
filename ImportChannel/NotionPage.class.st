@@ -1,6 +1,6 @@
 Class {
 	#name : #NotionPage,
-	#superclass : #Object,
+	#superclass : #ExternalContentItem,
 	#instVars : [
 		'notionJSON',
 		'url'
