@@ -1,34 +1,34 @@
 Class {
 	#name : #NotionDatabase,
-	#superclass : #Object,
+	#superclass : #NotionContentItem,
 	#instVars : [
-		'notionChannel',
 		'databaseID',
-		'json'
+		'json',
+		'nChannel'
 	],
 	#category : #ImportChannel
 }
 
 { #category : #accessing }
 NotionDatabase >> json [
-	json := (json ifNil: [notionChannel getJSON: self url] ifNotNil: [json]).
+	json := (json ifNil: [nChannel getJSON: self url] ifNotNil: [json]).
 	^ json.
 ]
 
 { #category : #accessing }
 NotionDatabase >> notionChannel: aNotionChannel [ 
-	notionChannel := aNotionChannel
+	nChannel := aNotionChannel
 ]
 
 { #category : #accessing }
 NotionDatabase >> notionChannel: aNotionChannel id: aDatabaseID [
-	notionChannel :=  aNotionChannel.
+	nChannel :=  aNotionChannel.
 	databaseID := aDatabaseID.
 ]
 
 { #category : #accessing }
 NotionDatabase >> notionJSON [
-	json := (json ifNil: [notionChannel getJSON: self url] ifNotNil: [json]).
+	json := (json ifNil: [nChannel getJSON: self url] ifNotNil: [json]).
 	^ json.
 ]
 
